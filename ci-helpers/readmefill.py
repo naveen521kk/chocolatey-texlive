@@ -1,8 +1,6 @@
-"""This script get the collection list from tlmgr and fills it into
-``ReadMe.md`` as well as write in ``texlive.nuspec``"""
+"""This script get the collection list from texlive.tlpdb and fills it into
+``ReadMe.md`` """
 
-import json
-import subprocess
 import requests
 
 readmePath = "../texlive/ReadMe.md"

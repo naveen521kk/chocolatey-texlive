@@ -1,5 +1,4 @@
 function Get-MajorVersion {
-    [CmdletBinding()]
     param(
         # Version string to parse.
         [Parameter(Mandatory=$true)]
@@ -12,16 +11,24 @@ function Get-MajorVersion {
 function Write-Profile {
     [CmdletBinding()]
     param (
-        [System.IO.Path]$InstallLoc="$env:SystemDrive\texlive\$(Get-MajorVersion -Version $($env:ChocolateyPackageVersion) )",
-        [string]$installType="full",
-        [System.IO.Path]$workingDir="$env:TEMP"
+        [string]$InstallLocation="$env:SystemDrive\texlive\$(Get-MajorVersion -Version $($env:ChocolateyPackageVersion) )",
+        [string]$installType="full", #also called scheme
+        [array]$collections=@(),
+        [string]$workingDir="$env:TEMP"
     )
     #installType = "full","medium","small","basic","minimal","context","gust","infraonly","tetex","custom"
-
-    $finalProfileStr="`n"
-    $finalProfileStr+="selected_scheme scheme-$($installType)`n"
-    #TODO Collections
-    $finalProfileStr+="TEXDIR $(InstallLoc)`n"
+    Write-Information "TeX Live Profile will be written to $workingDir\texlive.profile"
+    $finalProfileStr=""
+    $finalProfileStr+="selected_scheme scheme-$($installType)`n" #select scheme
+    $finalProfileStr+="TEXDIR $($InstallLocation)`n" #select texdir
+    #collection loop
+    if ($collections -ne $null){
+        foreach ($coll in $collections)
+            {
+            $finalProfileStr+="collection-$coll 1`n"
+        }
+    }
     Set-Content -Path "$workingDir\texlive.profile" -Value "$finalProfileStr"
+    Write-Debug "Written Profile in $workingDir\texlive.profile."
     return @{profileLoc="$workingDir\texlive.profile"}
   }

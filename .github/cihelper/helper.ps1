@@ -1,20 +1,3 @@
-Function Get-RedirectedUrl {
- 
-    Param (
-        [Parameter(Mandatory=$true)]
-        [String]$URL
-    )
- 
-    $request = [System.Net.WebRequest]::Create($url)
-    $request.AllowAutoRedirect=$false
-    $response=$request.GetResponse()
- 
-    If ($response.StatusCode -eq "Found")
-    {
-        $response.GetResponseHeader("Location")
-    }
-}
-
 #from https://github.com/chocolatey/choco/blob/stable/src/chocolatey.resources/helpers/functions/Get-UninstallRegistryKey.ps1
 function Get-UninstallRegistryKey {
     <#
