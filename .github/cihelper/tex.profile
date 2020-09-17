@@ -1,3 +1,3 @@
-selected_scheme scheme-full
+selected_scheme scheme-basic
 
 TEXDIR C:\texlive\2020
