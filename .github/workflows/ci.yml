@@ -8,9 +8,14 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
-
-      - name: Prepare the Workspace
-        run: ./run.ps1
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Prepare workspace
+        run: |
+         cd ci-helpers  
+         ./run.ps1
 
       - name: Install a Texlive Full using Chocolatey
         shell: cmd
