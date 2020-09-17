@@ -35,5 +35,5 @@ jobs:
       - name: Dump Registry Keys
         run: |
           Import-Module "$PWD\.github\cihelper\helper.ps1"
-          Get-UninstallRegistryKey -SoftwareName "texlive*"
-          Get-UninstallRegistryKey -SoftwareName "tex*"
+          Get-UninstallRegistryKey "texlive*"
+          Get-UninstallRegistryKey "tex*"

@@ -94,8 +94,8 @@ function Get-UninstallRegistryKey {
       [string] $softwareName,
       [parameter(ValueFromRemainingArguments = $true)][Object[]] $ignoredArguments
     )
-    
-      Write-FunctionCallLogMessage -Invocation $MyInvocation -Parameters $PSBoundParameters
+    $ErrorActionPreference = 'continue'
+      #Write-FunctionCallLogMessage -Invocation $MyInvocation -Parameters $PSBoundParameters
     
       if ($softwareName -eq $null -or $softwareName -eq '') {
         throw "$SoftwareName cannot be empty for Get-UninstallRegistryKey"
