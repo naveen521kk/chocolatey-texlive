@@ -24,21 +24,21 @@ print(collectionList, schemeList)
 # Write to ``Readme.md``
 with open(readmePath) as f:
     readme = f.read()
-collectionTextMD = "\n- ".join(collectionList)
-schemeTextMD = "\n- ".join(schemeList)
+collectionTextMD = "- "+"\n- ".join(collectionList)
+schemeTextMD = "- "+"\n- ".join(schemeList)
 
 readme = (
     readme.split("<!--schemes Start-->")[0]
-    + "<!--schemes Start-->"
+    + "<!--schemes Start-->\n"
     + schemeTextMD
-    + "<!--schemes End-->"
+    + "\n<!--schemes End-->"
     + readme.split("<!--schemes End-->")[1]
 )
 readme = (
     readme.split("<!--collections Start-->")[0]
-    + "<!--collections Start-->"
+    + "<!--collections Start-->\n"
     + collectionTextMD
-    + "<!--collections End-->"
+    + "\n<!--collections End-->"
     + readme.split("<!--collections End-->")[1]
 )
 with open(readmePath,"w") as f:
