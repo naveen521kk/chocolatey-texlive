@@ -35,7 +35,7 @@ $profilelocation = Write-Profile @profileArgs
 # extract install.zip
 Get-ChocolateyUnzip -FileFullPath "$toolsDir\install-tl.zip" -Destination "$toolsDir\installer"
 Move-Item "$toolsDir\installer\install-tl-*\*" "$toolsDir"
-Remove-Item "$toolsDir\installer" -Recurse -ErrorAction="continue"
+Remove-Item "$toolsDir\installer" -Recurse
 
 # This also works for cmd and is required if you have any spaces in the paths within your command
 $appPath = $toolsDir
