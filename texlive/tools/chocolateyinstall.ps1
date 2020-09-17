@@ -36,7 +36,7 @@ $profilelocation = Write-Profile @profileArgs
 Get-ChocolateyUnzip -FileFullPath "$toolsDir\install-tl.zip" -Destination "$toolsDir"
 dir
 tree
-Move-Item "$toolsDir\installer\install-tl-*" "$toolsDir\install-tl"
+Move-Item "$toolsDir\install-tl-*" "$toolsDir\install-tl"
 dir
 dir install-tl
 #Remove-Item "$toolsDir\installer" -Recurse
