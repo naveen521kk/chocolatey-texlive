@@ -45,4 +45,5 @@ tree $toolsDir
 echo "$(gc $($profilelocation.profileLoc))"
 # This also works for cmd and is required if you have any spaces in the paths within your command
 $cmdBatch = "/c `"`"$($toolsDir)\install-tl-windows.bat`" -no-gui -profile='$($profilelocation.profileLoc)'`""
-Start-ChocolateyProcessAsAdmin -Statements "$cmdBatch" -ExeToRun "cmd.exe"
+Start-ChocolateyProcessAsAdmin -Statements "$cmdBatch" -ExeToRun "cmd.exe" -NoSleep -Elevated -WorkingDirectory "$toolsDir"
+
