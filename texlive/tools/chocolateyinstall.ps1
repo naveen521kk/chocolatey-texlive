@@ -37,7 +37,7 @@ Get-ChocolateyUnzip -FileFullPath "$toolsDir\install-tl.zip" -Destination "$tool
 dir $toolsDir
 tree $toolsDir
 echo "Moving Directories"
-Move-Item -LiteralPath "$toolsDir\install-tl-*\*" -Destination "$toolsDir" -Force 
+Move-Item -Path "$toolsDir\install-tl-*\*" -Destination "$toolsDir" -Force 
 dir $toolsDir
 echo "Tools dir is $toolsDir"
 dir install-tl
