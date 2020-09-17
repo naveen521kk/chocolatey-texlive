@@ -5,6 +5,7 @@ Set-Location ../
 
 #run python script
 Set-Location ci-helpers
+pip install requests
 python readmefill.py
 
 #run nuspec filler
