@@ -16,7 +16,7 @@ jobs:
           curl -L "$($getRedirectUrl)/systems/texlive/tlnet/install-tl.zip" -o "$PWD\install-tl.zip"
           curl -L "$($getRedirectUrl)/systems/texlive/tlnet/install-tl.zip.sha512" -o "$PWD\install-tl.zip.sha512"
           $checksum = Get-FileHash -Path "$PWD\install-tl.zip" -Algorithm "sha512"
-          if ($checksum.hash.toString() -neq $($(gc "install-tl.zip.sha512") -split " ")[0] )
+          if ($checksum.hash.toString() -ne $($(gc "install-tl.zip.sha512") -split " ")[0] )
           {
             exit 1
           }
