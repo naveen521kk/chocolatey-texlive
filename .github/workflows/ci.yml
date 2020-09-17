@@ -44,3 +44,9 @@ jobs:
         with:
           name: chocologs
           path: choco.txt
+      - name: Upload Logs if failes
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: pack
+          path: texlive/*.nupkg
