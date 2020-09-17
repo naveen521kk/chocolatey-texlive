@@ -1,6 +1,6 @@
 ﻿$ErrorActionPreference = 'Stop'; # stop on all errors
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-. "$toolsPath/helper.ps1"
+. "$toolsDir/helper.ps1"
 
 $pp = Get-PackageParameters
 if (!$pp['collections']) {
