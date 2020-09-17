@@ -23,7 +23,7 @@ jobs:
         run: |
           cd texlive
           choco pack
-          choco install --no-progress texlive -source "'.;https://chocolatey.org/api/v2/'" --log-file "$PWD\choco.txt"
+          choco install --no-progress texlive -source "." --log-file "$PWD\choco.txt"
 
       - name: Dump Registry Keys
         continue-on-error: true
@@ -38,12 +38,12 @@ jobs:
         if: ${{ failure() }}
         with:
           name: chocologs
-          path: choco.txt
+          path: C:\ProgramData\chocolatey\logs\chocolatey.log
       - name: Upload Logs if Sucess
         uses: actions/upload-artifact@v2
         with:
           name: chocologs
-          path: choco.txt
+          path: C:\ProgramData\chocolatey\logs\chocolatey.log
       - name: Upload Logs if failes
         uses: actions/upload-artifact@v2
         if: ${{ failure() }}
