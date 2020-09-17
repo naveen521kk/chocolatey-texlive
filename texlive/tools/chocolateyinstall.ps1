@@ -39,5 +39,5 @@ Remove-Item "$toolsDir\installer" -Recurse
 
 # This also works for cmd and is required if you have any spaces in the paths within your command
 $appPath = $toolsDir
-$cmdBatch = "/c `"$toolsDir\install-tl-windows.bat`" -no-gui -profile=`"$($profilelocation)`""
+$cmdBatch = "/c `"$toolsDir\install-tl-windows.bat`" -no-gui -profile=`"$($profilelocation.profileLoc)`""
 Start-ChocolateyProcessAsAdmin -Statements $cmdBatch -ExeToRun "cmd.exe"
