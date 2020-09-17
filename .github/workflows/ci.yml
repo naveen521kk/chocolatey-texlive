@@ -24,11 +24,12 @@ jobs:
           7z x install-tl.zip -otexlive
           Move-Item "$PWD\texlive\install-tl-*" "$PWD\texlive\install-tl"
           cp "$PWD\.github\cihelper\tex.profile" "$PWD\texlive\install-tl\tex.profile"
+          dir
       - name: Install a Texlive Full
         shell: cmd
         run: |
-          cd "$PWD\texlive\install-tl"
-          install-tl-windows.bat -no-gui -profile=tex.profile
+          cd "texlive\install-tl\"
+          ./install-tl-windows.bat -no-gui -profile=tex.profile
           dir
 
       - name: Dump Registry Keys
