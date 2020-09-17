@@ -20,7 +20,7 @@ if (!$pp['InstallationPath']) {
 
 $params = "/collections:$($pp['collections']) /scheme:$($pp['scheme']) /InstallationPath:$($pp['InstallationPath'])"
 Write-Debug "Recieved Package Parameters: $params"
-
+echo "Writing Profile"
 #write texlive profile
 Write-Information "Writing Profile using Passed Parameters."
 
@@ -34,10 +34,11 @@ $profilelocation = Write-Profile @profileArgs
 
 # extract install.zip
 Get-ChocolateyUnzip -FileFullPath "$toolsDir\install-tl.zip" -Destination "$toolsDir"
-dir
-tree
+dir $toolsDir
+tree $toolsDir
 Move-Item "$toolsDir\install-tl-*" "$toolsDir\install-tl"
-dir
+dir $toolsDir
+echo "Tools dir is $toolsDir"
 dir install-tl
 #Remove-Item "$toolsDir\installer" -Recurse
 tree
