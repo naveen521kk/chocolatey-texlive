@@ -9,4 +9,4 @@ pip install requests
 python readmefill.py
 
 #run nuspec filler
-./readmetonuspec.ps1
+#./readmetonuspec.ps1
