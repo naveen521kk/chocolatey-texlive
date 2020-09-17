@@ -17,9 +17,9 @@ jobs:
           tree
           cd ci-helpers  
           ./run.ps1
-
+          tree
+          dir texlive\tools
       - name: Install a Texlive Full using Chocolatey
-        shell: cmd
         run: |
           cd texlive
           choco pack
