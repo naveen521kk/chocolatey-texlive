@@ -12,7 +12,8 @@ jobs:
       - name: Pull install-tl.zip
         run: |
           Import-Module "$PWD\.github\cihelper\helper.ps1"
-          $getRedirectUrl=$(Get-RedirectedUrl -URL "http://mirror.ctan.org")
+          # $getRedirectUrl=$(Get-RedirectedUrl -URL "http://mirror.ctan.org")
+          $getRedirectUrl="http://mirror.ctan.org"
           curl -L "$($getRedirectUrl)/systems/texlive/tlnet/install-tl.zip" -o "$PWD\install-tl.zip"
           curl -L "$($getRedirectUrl)/systems/texlive/tlnet/install-tl.zip.sha512" -o "$PWD\install-tl.zip.sha512"
           $checksum = Get-FileHash -Path "$PWD\install-tl.zip" -Algorithm "sha512"
