@@ -1,0 +1,37 @@
+name: CI
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Pull install-tl.zip
+        run: |
+          Import-Module "$PWD\.github\cihelper\helper.ps1"
+          $getRedirectUrl=$(Get-RedirectedUrl -URL "http://mirror.ctan.org")
+          curl -L "$($getRedirectUrl)/systems/texlive/tlnet/install-tl.zip" -o "$PWD\install-tl.zip"
+          curl -L "$($getRedirectUrl)/systems/texlive/tlnet/install-tl.zip.sha512" -o "$PWD\install-tl.zip.sha512"
+          $checksum = Get-FileHash -Path "$PWD\install-tl.zip" -Algorithm "sha512"
+          if ($checksum.hash.toString() -neq $($(gc "install-tl.zip.sha512") -split " ")[0] )
+          {
+            exit 1
+          }
+          7z x install-tl.zip -otexlive
+          Move-Item "$PWD\texlive\install-tl-*" "$PWD\texlive\install-tl"
+          cp "$PWD\.github\cihelper\tex.profile" "$PWD\texlive\install-tl\tex.profile"
+      - name: Install a Texlive Full
+        shell: cmd
+        run: |
+          cd "$PWD\texlive\install-tl"
+          install-tl-windows.bat -no-gui -profile=tex.profile
+          dir
+
+      - name: Dump Registry Keys
+        run: |
+          Import-Module "$PWD\.github\cihelper\helper.ps1"
+          Get-UninstallRegistryKey -SoftwareName "texlive*"
+          Get-UninstallRegistryKey -SoftwareName "tex*"
