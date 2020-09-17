@@ -40,11 +40,9 @@ echo "Moving Directories"
 Move-Item -Path "$toolsDir\install-tl-*\*" -Destination "$toolsDir" -Force 
 dir $toolsDir
 echo "Tools dir is $toolsDir"
-dir install-tl
 #Remove-Item "$toolsDir\installer" -Recurse
 tree $toolsDir
 echo "$(gc $($profilelocation.profileLoc))"
 # This also works for cmd and is required if you have any spaces in the paths within your command
-$appPath = $toolsDir
 $cmdBatch = "/c `"$($toolsDir)\install-tl-windows.bat`" -no-gui -profile=`"$($profilelocation.profileLoc)`""
 Start-ChocolateyProcessAsAdmin -Statements $cmdBatch -ExeToRun "cmd.exe"
