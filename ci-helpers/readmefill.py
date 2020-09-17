@@ -1,0 +1,45 @@
+"""This script get the collection list from tlmgr and fills it into
+``ReadMe.md`` as well as write in ``texlive.nuspec``"""
+
+import json
+import subprocess
+import requests
+
+readmePath = "../texlive/ReadMe.md"
+# get texlive.tlpdb
+whereTlpdb = "http://mirror.ctan.org/systems/texlive/tlnet/tlpkg/texlive.tlpdb"
+con = requests.get(whereTlpdb)
+
+# get collection list scheme list
+collectionList = []
+schemeList = []
+content = con.text
+for i in content.split("\n"):
+    if "name collection-" in i:
+        collectionList.append(i.split("-")[-1])
+    if "name scheme-" in i:
+        schemeList.append(i.split("-")[-1])
+print(collectionList, schemeList)
+
+# Write to ``Readme.md``
+with open(readmePath) as f:
+    readme = f.read()
+collectionTextMD = "\n- ".join(collectionList)
+schemeTextMD = "\n- ".join(schemeList)
+
+readme = (
+    readme.split("<!--schemes Start-->")[0]
+    + "<!--schemes Start-->"
+    + schemeTextMD
+    + "<!--schemes End-->"
+    + readme.split("<!--schemes End-->")[1]
+)
+readme = (
+    readme.split("<!--collections Start-->")[0]
+    + "<!--collections Start-->"
+    + collectionTextMD
+    + "<!--collections End-->"
+    + readme.split("<!--collections End-->")[1]
+)
+with open(readmePath,"w") as f:
+    f.write(readme)
