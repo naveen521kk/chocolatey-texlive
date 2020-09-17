@@ -33,11 +33,11 @@ $profileArgs = @{
 $profilelocation = Write-Profile @profileArgs
 
 # extract install.zip
-Get-ChocolateyUnzip -FileFullPath "$toolsDir\install-tl.zip" -Destination "$toolsDir\installer"
-Move-Item "$toolsDir\installer\install-tl-*" "$toolsDir"
+Get-ChocolateyUnzip -FileFullPath "$toolsDir\install-tl.zip" -Destination "$toolsDir"
+Move-Item "$toolsDir\installer\install-tl-*" "$toolsDir\install-tl"
 #Remove-Item "$toolsDir\installer" -Recurse
 tree
 # This also works for cmd and is required if you have any spaces in the paths within your command
 $appPath = $toolsDir
-$cmdBatch = "/c `"$toolsDir\install-tl-windows.bat`" -no-gui -profile=`"$($profilelocation.profileLoc)`""
+$cmdBatch = "/c `"$toolsDir\install-tl\install-tl-windows.bat`" -no-gui -profile=`"$($profilelocation.profileLoc)`""
 Start-ChocolateyProcessAsAdmin -Statements $cmdBatch -ExeToRun "cmd.exe"
