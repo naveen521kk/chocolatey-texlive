@@ -33,6 +33,7 @@ jobs:
           dir
 
       - name: Dump Registry Keys
+        continue-on-error: true
         run: |
           Import-Module "$PWD\.github\cihelper\helper.ps1"
           Get-UninstallRegistryKey "texlive*"
