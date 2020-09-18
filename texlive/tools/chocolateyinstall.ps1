@@ -34,17 +34,11 @@ $profilelocation = Write-Profile @profileArgs
 
 # extract install.zip
 Get-ChocolateyUnzip -FileFullPath "$toolsDir\install-tl.zip" -Destination "$toolsDir" -PackageName "texlive"
-dir $toolsDir
-tree $toolsDir
-echo "Moving Directories"
 Move-Item -Path "$toolsDir\install-tl-*\*" -Destination "$toolsDir" -Force 
-dir $toolsDir
-echo "Tools dir is $toolsDir"
-#Remove-Item "$toolsDir\installer" -Recurse
-tree $toolsDir
-echo "$(gc $($profilelocation.profileLoc))"
+Remove-Item "$toolsDir\install-tl-*" -Recurse -Force
+
 # This also works for cmd and is required if you have any spaces in the paths within your command
-$cmdBatch = "/c `"`"$($toolsDir)\install-tl-windows.bat`" -no-gui -profile='$($profilelocation.profileLoc)'`""
+#$cmdBatch = "/c `"`"$($toolsDir)\install-tl-windows.bat`" -no-gui -profile='$($profilelocation.profileLoc)'`""
 #Start-ChocolateyProcessAsAdmin -Statements "$cmdBatch" -ExeToRun "cmd.exe" -NoSleep -Elevated -WorkingDirectory "$toolsDir"
 Start-ChocolateyProcessAsAdmin "& '$($toolsDir)\install-tl-windows.bat' -no-gui -profile='$($profilelocation.profileLoc)'" -Elevated -WorkingDirectory "$toolsDir"
 
