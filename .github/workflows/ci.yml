@@ -24,7 +24,7 @@ jobs:
         run: |
           cd texlive
           choco pack
-          choco install --no-progress texlive -source "." --log-file "$PWD\choco.txt"
+          choco install --no-progress texlive -source "." --log-file "$PWD\choco.txt" --params="'/scheme:basic'"
 
       - name: Dump Registry Keys
         continue-on-error: true
