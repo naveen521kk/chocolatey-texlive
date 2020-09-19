@@ -35,7 +35,7 @@ $profilelocation = Write-Profile @profileArgs
 # extract install.zip
 Get-ChocolateyUnzip -FileFullPath "$toolsDir\install-tl.zip" -Destination "$toolsDir" -PackageName "texlive"
 Move-Item -Path "$toolsDir\install-tl-*\*" -Destination "$toolsDir" -Force 
-Remove-Item "$toolsDir\install-tl-*" -Recurse -Force
+
 
 # This also works for cmd and is required if you have any spaces in the paths within your command
 #$cmdBatch = "/c `"`"$($toolsDir)\install-tl-windows.bat`" -no-gui -profile='$($profilelocation.profileLoc)'`""
