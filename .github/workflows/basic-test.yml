@@ -47,7 +47,7 @@ jobs:
       - name: Upload Logs if Sucess
         uses: actions/upload-artifact@v2
         with:
-          name: chocologs
+          name: chocologs1
           path: texlive\choco.txt
       - name: Upload Logs if failes
         uses: actions/upload-artifact@v2
@@ -59,4 +59,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: profile
-          path: texlive.profile
+          path: texlive/texlive.profile
