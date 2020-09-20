@@ -55,3 +55,8 @@ jobs:
         with:
           name: pack
           path: texlive/*.nupkg
+      - name: Upload Profile
+        uses: actions/upload-artifact@v2
+        with:
+          name: profile
+          path: texlive.profile
