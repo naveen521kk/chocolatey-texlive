@@ -12,7 +12,7 @@ if (!$pp['collections']) {
      }
 }
 if (!$pp['scheme']) {
-     $pp['scheme'] = 'infraonly' #for now
+     $pp['scheme'] = 'full'
 }
 if (!$pp['InstallationPath']) {
     $pp['InstallationPath'] = "$env:SystemDrive\texlive\$(Get-MajorVersion "$env:ChocolateyPackageVersion")" 
