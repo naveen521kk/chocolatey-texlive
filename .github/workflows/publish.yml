@@ -43,6 +43,14 @@ jobs:
           git add .
           git commit -m "Texlive Release ${VERSION}"
           git push
+      - name: Push to Chocolatey
+        env:
+          CHOCO_KEY: ${{ secrets.CHOCO_API_KEY }}
+        run: |
+         cd texlive
+         choco pack
+         choco apikey --key $Env:CHOCO_KEY --source https://push.chocolatey.org/
+         choco push --source https://push.chocolatey.org/
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -67,14 +75,7 @@ jobs:
           asset_path: texlive/texlive.*.nupkg
           asset_name: texlive.nupkg
           asset_content_type: application/zip
-      - name: Push to Chocolatey
-        env:
-          CHOCO_KEY: ${{ secrets.CHOCO_API_KEY }}
-        run: |
-         cd texlive
-         choco pack
-         choco apikey --key $Env:CHOCO_KEY --source https://push.chocolatey.org/
-         choco push --source https://push.chocolatey.org/
+
       
       
       
