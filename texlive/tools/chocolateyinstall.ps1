@@ -55,6 +55,7 @@ $env:TEXLIVE_INSTALL_NO_WELCOME=$true
 
 if ($null -ne $pp['extraPackages']){
      foreach ($c in $pp['extraPackages']){
+          Write-Host "Installing $c using tlmgr"
           $c=$c.Trim()
           & "$($pp['InstallationPath'])\bin\win32\tlmgr.bat" install $c
       }
