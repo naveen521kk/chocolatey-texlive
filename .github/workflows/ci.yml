@@ -33,7 +33,7 @@ jobs:
           Get-UninstallRegistryKey "Tex Live*"
           Get-UninstallRegistryKey "tex*"
           $key=Get-UninstallRegistryKey "tex*"
-          choco uninstall texlive
+          choco uninstall -y texlive
           # Start-Process -FilePath "$($key.UninstallString)" -NoNewWindow -Wait
       - name: Upload Logs if failes
         uses: actions/upload-artifact@v2
