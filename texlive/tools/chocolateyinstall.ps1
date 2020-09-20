@@ -40,5 +40,5 @@ Move-Item -Path "$toolsDir\install-tl-*\*" -Destination "$toolsDir" -Force
 # This also works for cmd and is required if you have any spaces in the paths within your command
 #$cmdBatch = "/c `"`"$($toolsDir)\install-tl-windows.bat`" -no-gui -profile='$($profilelocation.profileLoc)'`""
 #Start-ChocolateyProcessAsAdmin -Statements "$cmdBatch" -ExeToRun "cmd.exe" -NoSleep -Elevated -WorkingDirectory "$toolsDir"
-Start-ChocolateyProcessAsAdmin "& '$($toolsDir)\install-tl-windows.bat' -no-gui -profile='$($profilelocation.profileLoc)'" -Elevated -WorkingDirectory "$toolsDir"
-
+#Start-ChocolateyProcessAsAdmin "& '$($toolsDir)\install-tl-windows.bat' -no-gui -profile='$($profilelocation.profileLoc)'" -Elevated -WorkingDirectory "$toolsDir"
+& '$($toolsDir)\install-tl-windows.bat' -no-gui -profile='$($profilelocation.profileLoc)'
