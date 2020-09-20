@@ -55,7 +55,7 @@ $env:TEXLIVE_INSTALL_NO_WELCOME=$true
 
 if ($null -ne $pp['extraPackages']){
      foreach ($c in $pp['extraPackages']){
-          $pkgs="$pkgs $c"
+          $pkgs="$c $pkgs"
       }
-     & "$($pp['InstallationPath'])\bin\win32\tlmgr.bat install $($pkgs)"
+     & "$($pp['InstallationPath'])\bin\win32\tlmgr.bat" install $($pkgs)
 }
