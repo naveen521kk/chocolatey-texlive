@@ -56,7 +56,7 @@ To have choco remember parameters on upgrade, be sure to set `choco feature enab
 <!--schemes End-->
 
 Note: This Package is automatically Maintained and if issues faced contact the Maintainer.
-]]></description><!--TODO HERE-->
+]]></description>
     <releaseNotes>https://www.tug.org/texlive/doc/texlive-en/texlive-en.html#x1-700009</releaseNotes>
     <dependencies>
       <dependency id="chocolatey-core.extension" version="1.1.0" />
