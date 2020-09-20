@@ -1,0 +1,45 @@
+name: publish
+on:
+  workflow_dispatch:
+
+jobs:
+  format:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Prepare workspace
+        run: |
+          tree
+          cd ci-helpers
+          ./run.ps1
+          cd ../
+          tree
+          dir texlive\tools
+      - name: Check for modified files
+        shell: bash
+        id: git-check
+        run: |
+          git status
+          echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
+          git ls-files -m>/d/diffmod.txt
+      - name: Commit and Push
+        shell: bash
+        if: steps.git-check.outputs.modified == 'true'
+        env:
+          email_address: ${{ secrets.EMAIL_ADDRESS }}
+        run: |
+          git config user.name "Naveen M K"
+          git config user.email "$env:email_address"
+          git add .
+          git commit -m "Montly Update for release"
+      
+      
