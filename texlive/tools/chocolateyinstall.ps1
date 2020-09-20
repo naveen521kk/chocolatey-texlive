@@ -42,4 +42,6 @@ Move-Item -Path "$toolsDir\install-tl-*\*" -Destination "$toolsDir" -Force
 #Start-ChocolateyProcessAsAdmin -Statements "$cmdBatch" -ExeToRun "cmd.exe" -NoSleep -Elevated -WorkingDirectory "$toolsDir"
 #Start-ChocolateyProcessAsAdmin "& '$($toolsDir)\install-tl-windows.bat' -no-gui -profile='$($profilelocation.profileLoc)'" -Elevated -WorkingDirectory "$toolsDir"
 #Start-ChocolateyProcessAsAdmin  "cmd.exe /C "'$($toolsDir)\install-tl-windows.bat' -no-gui -profile='$($profilelocation.profileLoc)' -q"  -Elevated -WorkingDirectory "$toolsDir"
-& "$($toolsDir)\install-tl-windows.bat" -no-gui -profile="$($profilelocation.profileLoc)"
+$env:TEXLIVE_INSTALL_ENV_NOCHECK=$true 
+$env:TEXLIVE_INSTALL_NO_WELCOME=$true
+& "$($toolsDir)\install-tl-windows.bat" -no-gui -q -profile="$($profilelocation.profileLoc)"
