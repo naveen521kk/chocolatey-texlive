@@ -57,5 +57,6 @@ if ($null -ne $pp['extraPackages']){
      foreach ($c in $pp['extraPackages']){
           $pkgs="$c $pkgs"
       }
-     & "$($pp['InstallationPath'])\bin\win32\tlmgr.bat" install $($pkgs)
+     $pkgs.Trim()
+     & "$($pp['InstallationPath'])\bin\win32\tlmgr.bat" install $pkgs
 }
