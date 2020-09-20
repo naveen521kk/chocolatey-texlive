@@ -1,4 +1,4 @@
-﻿$ErrorActionPreference = 'stop'; # stop on all errors
+﻿$ErrorActionPreference = 'continue'; # stop on all errors
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 . "$toolsDir/helper.ps1"
 
