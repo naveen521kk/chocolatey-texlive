@@ -17,10 +17,17 @@ if (!$pp['scheme']) {
 if (!$pp['InstallationPath']) {
     $pp['InstallationPath'] = "$env:SystemDrive\texlive\$(Get-MajorVersion "$env:ChocolateyPackageVersion")" 
 }
-
+if (!$pp['extraPackages']) {
+     $pp['extraPackages'] = $null
+ } else {
+     if (($pp['extraPackages']).GetType().BaseType.Name -ne "Array"){ #checking whether array
+          Write-Host "$($pp['extraPackages']) is not an Array so converting to array." -ForegroundColor Yellow
+          $pp['extraPackages']=($pp['extraPackages'] -split ",")
+     }
+ }
 $params = "/collections:$($pp['collections']) /scheme:$($pp['scheme']) /InstallationPath:$($pp['InstallationPath'])"
 Write-Debug "Recieved Package Parameters: $params"
-echo "Writing Profile"
+Write-Host "Writing Profile"
 #write texlive profile
 Write-Information "Writing Profile using Passed Parameters."
 
@@ -45,3 +52,10 @@ Move-Item -Path "$toolsDir\install-tl-*\*" -Destination "$toolsDir" -Force
 $env:TEXLIVE_INSTALL_ENV_NOCHECK=$true #powershell throws error without this
 $env:TEXLIVE_INSTALL_NO_WELCOME=$true
 & "$($toolsDir)\install-tl-windows.bat" -no-gui -profile="$($profilelocation.profileLoc)"
+
+if ($null -ne $pp['extraPackages']){
+     foreach ($c in $pp['extraPackages']){
+          $pkgs="$pkgs $c"
+      }
+     & "$($pp['InstallationPath'])\bin\win32\tlmgr.bat install $($pkgs)"
+}

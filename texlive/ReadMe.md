@@ -15,6 +15,7 @@ The following package parameters can be set:
 - `/collections:` - The TeX Live Collection to install. Default to None. Data type is comma seperated string. Allowed values are listed [here](#allowed-values-collections).
 - `/scheme:` - The scheme(type) you need to install. Defaults to scheme-full. Should be a string. Allowed values are listed [here](#allowed-values-schemes).
 - `/InstallationPath:` - Where to install the binaries to - defaults to "`$env:SystemDrive\texlive\<version major>`"
+- `/extraPackages:` - Extra LaTeX Packages that need to be installed using tlmgr. If multiple packages it needs comma seperated.
 
 To pass parameters, use `--params "''"` (e.g. `choco install texlive [other options] --params="'/collections:games /scheme:basic'"`).
 To have choco remember parameters on upgrade, be sure to set `choco feature enable -n=useRememberedArgumentsForUpgrades`.

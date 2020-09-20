@@ -1,0 +1,57 @@
+name: CI
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Prepare workspace
+        run: |
+          tree
+          cd ci-helpers  
+          ./run.ps1
+          cd ../
+          tree
+          dir texlive\tools
+      - name: Install a Texlive Full using Chocolatey
+        run: |
+          cd texlive
+          choco pack
+          choco install --no-progress texlive -source "." --log-file "$PWD\choco.txt"
+
+      - name: Dump Registry Keys
+        continue-on-error: true
+        run: |
+          Import-Module "$PWD\.github\cihelper\helper.ps1"
+          Get-UninstallRegistryKey "Tex Live*"
+          #never test uninstaller
+          # Start-Process -FilePath "$($key.UninstallString)" -NoNewWindow -Wait
+      - name: Upload Logs if failes
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: chocologs
+          path: C:\ProgramData\chocolatey\logs\*
+      - name: Upload Logs if Sucess
+        uses: actions/upload-artifact@v2
+        with:
+          name: chocologs
+          path: C:\ProgramData\chocolatey\logs\*
+      - name: Upload Logs if Sucess
+        uses: actions/upload-artifact@v2
+        with:
+          name: chocologs
+          path: texlive\choco.txt
+      - name: Upload Logs if failes
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: pack
+          path: texlive/*.nupkg

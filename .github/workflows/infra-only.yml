@@ -15,7 +15,7 @@ jobs:
       - name: Prepare workspace
         run: |
           tree
-          cd ci-helpers  
+          cd ci-helpers
           ./run.ps1
           cd ../
           tree
@@ -24,16 +24,14 @@ jobs:
         run: |
           cd texlive
           choco pack
-          choco install --no-progress texlive -source "." --log-file "$PWD\choco.txt" --params="'/collections: games'"
+          choco install --no-progress texlive -source "." --log-file "$PWD\choco.txt" --params="'/scheme:infraonly /extraPackages:amsfont,float'"
 
       - name: Dump Registry Keys
         continue-on-error: true
         run: |
           Import-Module "$PWD\.github\cihelper\helper.ps1"
           Get-UninstallRegistryKey "Tex Live*"
-          Get-UninstallRegistryKey "tex*"
-          $key=Get-UninstallRegistryKey "tex*"
-          choco uninstall -y texlive
+          #never test uninstaller
           # Start-Process -FilePath "$($key.UninstallString)" -NoNewWindow -Wait
       - name: Upload Logs if failes
         uses: actions/upload-artifact@v2
