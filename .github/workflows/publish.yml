@@ -36,12 +36,13 @@ jobs:
         if: steps.git-check.outputs.modified == 'true'
         env:
           email_address: ${{ secrets.EMAIL_ADDRESS }}
+          VERSION: ${{ steps.git-check.outputs.version }}
         run: |
           git config user.name "Naveen M K"
-          git config user.email "$env:email_address"
+          git config user.email "${email_address}"
           git add .
-          git commit -m "Montly Update for release"
-          # git push
+          git commit -m "Texlive Release ${VERSION}"
+          git push
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -72,8 +73,8 @@ jobs:
         run: |
          cd texlive
          choco pack
-         # choco apikey --key $Env:CHOCO_KEY --source https://push.chocolatey.org/
-         # choco push --source https://push.chocolatey.org/
+         choco apikey --key $Env:CHOCO_KEY --source https://push.chocolatey.org/
+         choco push --source https://push.chocolatey.org/
       
       
       
