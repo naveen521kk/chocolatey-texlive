@@ -1,4 +1,4 @@
-name: CI
+name: Infra-Only test with some Latex Package
 on:
   push:
 
@@ -20,7 +20,7 @@ jobs:
           cd ../
           tree
           dir texlive\tools
-      - name: Install a Texlive Full using Chocolatey
+      - name: Install Texlive using Chocolatey
         run: |
           cd texlive
           choco pack
