@@ -27,7 +27,7 @@ if (!$pp['extraPackages']) {
  }
 $params = "/collections:$($pp['collections']) /scheme:$($pp['scheme']) /InstallationPath:$($pp['InstallationPath'])"
 Write-Debug "Recieved Package Parameters: $params"
-Write-Host "Writing Profile"
+Write-Host "Writing Profile" -ForegroundColor Yellow
 #write texlive profile
 Write-Information "Writing Profile using Passed Parameters."
 
@@ -55,7 +55,7 @@ $env:TEXLIVE_INSTALL_NO_WELCOME=$true
 
 if ($null -ne $pp['extraPackages']){
      foreach ($c in $pp['extraPackages']){
-          Write-Host "Installing $c using tlmgr"
+          Write-Host "Installing $c using tlmgr" -ForegroundColor DarkBlue
           $c=$c.Trim()
           & "$($pp['InstallationPath'])\bin\win32\tlmgr.bat" install $c
       }
@@ -63,6 +63,5 @@ if ($null -ne $pp['extraPackages']){
 }
 $files = get-childitem $toolsDir -include *.exe -recurse
 foreach ($file in $files) {
-  #We are directly adding it to path so no need to generate shims
   New-Item "$file.ignore" -type file -force | Out-Null
 }
