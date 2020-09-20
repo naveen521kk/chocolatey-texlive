@@ -55,10 +55,10 @@ $env:TEXLIVE_INSTALL_NO_WELCOME=$true
 
 if ($null -ne $pp['extraPackages']){
      foreach ($c in $pp['extraPackages']){
-          $pkgs="$c $pkgs"
+          $c=$c.Trim()
+          & "$($pp['InstallationPath'])\bin\win32\tlmgr.bat" install $c
       }
-     $pkgs=$pkgs.Trim()
-     & "$($pp['InstallationPath'])\bin\win32\tlmgr.bat" install $pkgs
+     
 }
 $files = get-childitem $toolsDir -include *.exe -recurse
 foreach ($file in $files) {
