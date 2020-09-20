@@ -24,7 +24,7 @@ jobs:
         run: |
           cd texlive
           choco pack
-          choco install --no-progress texlive -source "." --log-file "$PWD\choco.txt" --params="'/scheme:infraonly /extraPackages:amsfont,float'"
+          choco install --no-progress texlive -source "." --log-file "$PWD\choco.txt" --params="'/scheme:infraonly /extraPackages:latex,xetex'"
 
       - name: Dump Registry Keys
         continue-on-error: true
