@@ -1,4 +1,4 @@
-name: Full Installation Test
+name: Minimal Installation Test
 on:
   push:
 
