@@ -60,3 +60,8 @@ if ($null -ne $pp['extraPackages']){
      $pkgs.Trim()
      & "$($pp['InstallationPath'])\bin\win32\tlmgr.bat" install $pkgs
 }
+$files = get-childitem $toolsDir -include *.exe -recurse
+foreach ($file in $files) {
+  #We are directly adding it to path so no need to generate shims
+  New-Item "$file.ignore" -type file -force | Out-Null
+}
