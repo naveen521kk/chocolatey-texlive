@@ -40,12 +40,17 @@ jobs:
         if: ${{ failure() }}
         with:
           name: chocologs
-          path: C:\ProgramData\chocolatey\logs\chocolatey.log
+          path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
         uses: actions/upload-artifact@v2
         with:
           name: chocologs
-          path: C:\ProgramData\chocolatey\logs\chocolatey.log
+          path: C:\ProgramData\chocolatey\logs\*
+      - name: Upload Logs if Sucess
+        uses: actions/upload-artifact@v2
+        with:
+          name: chocologs
+          path: texlive\choco.txt
       - name: Upload Logs if failes
         uses: actions/upload-artifact@v2
         if: ${{ failure() }}
