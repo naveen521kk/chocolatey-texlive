@@ -24,14 +24,62 @@ To have choco remember parameters on upgrade, be sure to set `choco feature enab
 
 <!--To be automatically filled.-->
 <!--collections Start-->
-
+- basic
+- bibtexextra
+- binextra
+- context
+- fontsextra
+- fontsrecommended
+- fontutils
+- formatsextra
+- games
+- humanities
+- langarabic
+- langchinese
+- langcjk
+- langcyrillic
+- langczechslovak
+- langenglish
+- langeuropean
+- langfrench
+- langgerman
+- langgreek
+- langitalian
+- langjapanese
+- langkorean
+- langother
+- langpolish
+- langportuguese
+- langspanish
+- latex
+- latexextra
+- latexrecommended
+- luatex
+- mathscience
+- metapost
+- music
+- pictures
+- plaingeneric
+- pstricks
+- publishers
+- texworks
+- wintools
+- xetex
 <!--collections End-->
 
 ### Allowed Values Schemes
 
 <!--To be automatically filled.-->
 <!--schemes Start-->
-
+- basic
+- context
+- full
+- gust
+- infraonly
+- medium
+- minimal
+- small
+- tetex
 <!--schemes End-->
 
 Note: This Package is automatically Maintained and if issues faced contact the Maintainer.
