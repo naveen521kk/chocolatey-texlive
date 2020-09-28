@@ -21,7 +21,6 @@ FileChecksum = hashlib.sha256(con.content).hexdigest()
 
 print("File URL:",urlTexZip)
 VERIFICATION_TEXT=f"""
-
 VERIFICATION
 
 Verification is intended to assist the Chocolatey moderators and community
@@ -60,3 +59,5 @@ http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip
 when the package was published and can be verified from the site
 https://texlive.info using the steps above.
 """
+with open(verificationFileLoc,"w") as f:
+    f.write(VERIFICATION_TEXT)
