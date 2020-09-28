@@ -29,6 +29,7 @@ jobs:
         id: git-check
         run: |
           git status
+          echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
           echo ::set-output name=version::$(python ci-helpers/showversion.py)
 
       - name: Commit and Push
@@ -72,7 +73,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: texlive/texlive.*.nupkg
+          asset_path: texlive/*.nupkg
           asset_name: texlive.nupkg
           asset_content_type: application/zip
 
