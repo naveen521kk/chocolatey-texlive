@@ -29,7 +29,7 @@ $params = "/collections:$($pp['collections']) /scheme:$($pp['scheme']) /Installa
 Write-Debug "Recieved Package Parameters: $params"
 Write-Host "Writing Profile" -ForegroundColor Yellow
 #write texlive profile
-Write-Information "Writing Profile using Passed Parameters."
+Write-Host "Writing Profile using Passed Parameters."
 
 $profileArgs = @{
      InstallLocation=$pp['InstallationPath']
