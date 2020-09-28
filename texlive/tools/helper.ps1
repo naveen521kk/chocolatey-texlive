@@ -17,7 +17,7 @@ function Write-Profile {
         [string]$workingDir="$env:TEMP"
     )
     #installType = "full","medium","small","basic","minimal","context","gust","infraonly","tetex","custom"
-    Write-Information "TeX Live Profile will be written to $workingDir\texlive.profile"
+    Write-Host "TeX Live Profile will be written to $workingDir\texlive.profile" -ForegroundColor Yellow
     $finalProfileStr=""
     $finalProfileStr+="selected_scheme scheme-$($installType)`n" #select scheme
     $finalProfileStr+="TEXDIR $($InstallLocation)`n" #select texdir
