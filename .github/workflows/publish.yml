@@ -52,7 +52,7 @@ jobs:
         run: |
          cd texlive
          choco pack
-         $nupkgFile=Resolve-Path texlive\*.nupkg
+         $nupkgFile=$(Resolve-Path *.nupkg)
          echo ::set-output name=nupkg::$($nupkgFile)
          choco apikey --key $Env:CHOCO_KEY --source https://push.chocolatey.org/
          choco push --source https://push.chocolatey.org/
