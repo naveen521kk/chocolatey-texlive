@@ -35,7 +35,7 @@ $profileArgs = @{
      InstallLocation=$pp['InstallationPath']
      installType=$pp['scheme']
      collections=$pp['collections']
-     workingDir="$($TEMP)"
+     workingDir="$($env:TEMP)"
 }
 $profilelocation = Write-Profile @profileArgs
 
