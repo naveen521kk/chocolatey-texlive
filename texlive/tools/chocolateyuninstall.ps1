@@ -5,8 +5,8 @@ $ErrorActionPreference = 'Stop'; # stop on all errors
 if ($key.Count -eq 1) {
   $key | % { 
     $uninstStr = "$($_.UninstallString)".split('"') #should contain no quotes
-	Write-Debug "Uninstall String was $uninstStr"
-	& "$uninstStr"
+	Write-Debug "Uninstall String was $uninstStr adding '--no-confirm' parameter"
+	& "$uninstStr" --no-confirm
     
   }
 } elseif ($key.Count -eq 0) {
