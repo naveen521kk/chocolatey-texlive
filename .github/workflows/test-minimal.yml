@@ -31,8 +31,8 @@ jobs:
         run: |
           Import-Module "$PWD\.github\cihelper\helper.ps1"
           Get-UninstallRegistryKey "Tex Live*"
-          #gonna test uninstaller
-          choco uninstall texlive
+          #not gonna test uninstaller
+          #choco uninstall texlive
       - name: Upload Logs if failes
         uses: actions/upload-artifact@v2
         if: ${{ failure() }}

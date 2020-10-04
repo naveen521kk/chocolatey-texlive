@@ -22,8 +22,7 @@ To have choco remember parameters on upgrade, be sure to set `choco feature enab
 
 ### Allowed Values Collections
 
-<!--To be automatically filled.-->
-<!--collections Start-->
+
 - basic
 - bibtexextra
 - binextra
@@ -65,12 +64,11 @@ To have choco remember parameters on upgrade, be sure to set `choco feature enab
 - texworks
 - wintools
 - xetex
-<!--collections End-->
+
 
 ### Allowed Values Schemes
 
-<!--To be automatically filled.-->
-<!--schemes Start-->
+
 - basic
 - context
 - full
@@ -80,6 +78,6 @@ To have choco remember parameters on upgrade, be sure to set `choco feature enab
 - minimal
 - small
 - tetex
-<!--schemes End-->
+
 
 Note: This Package is automatically Maintained and if issues faced contact the Maintainer.
