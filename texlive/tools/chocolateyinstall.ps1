@@ -26,7 +26,7 @@ if (!$pp['extraPackages']) {
      }
  }
 $params = "/collections:$($pp['collections']) /scheme:$($pp['scheme']) /InstallationPath:$($pp['InstallationPath'])"
-Write-Debug "Recieved Package Parameters: $params"
+Write-Debug "Received Package Parameters: $params"
 Write-Host "Writing Profile" -ForegroundColor Yellow
 #write texlive profile
 Write-Host "Writing Profile using Passed Parameters."
