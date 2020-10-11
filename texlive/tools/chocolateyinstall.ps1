@@ -38,7 +38,7 @@ $profileArgs = @{
      workingDir="$($env:TEMP)"
 }
 $profilelocation = Write-Profile @profileArgs
-Write-Debug "Profile contents are `n $(gc $profilelocation)"
+Write-Debug "Profile contents are `n $(gc $profilelocation.profileLoc)"
 # extract install.zip
 Write-Debug "Extracting and Moving Folders"
 Get-ChocolateyUnzip -FileFullPath "$toolsDir\install-tl.zip" -Destination "$toolsDir" -PackageName "texlive"
@@ -48,8 +48,9 @@ Write-Debug "Setting Environment variables TEXLIVE_INSTALL_ENV_NOCHECK and TEXLI
 $env:TEXLIVE_INSTALL_ENV_NOCHECK=$true #powershell throws error without this
 $env:TEXLIVE_INSTALL_NO_WELCOME=$true
 
-Write-Debug "Installer Version is $(& "$($toolsDir)\install-tl-windows.bat" -version)"
+#Write-Debug "Installer Version is $(& "$($toolsDir)\install-tl-windows.bat" -version)"
 Write-Debug "Starting Installer with parameter -no-gui -profile=`"$($profilelocation.profileLoc)`""
+tree /A /F
 & "$($toolsDir)\install-tl-windows.bat" -no-gui -profile="$($profilelocation.profileLoc)"
 
 if ($null -ne $pp['extraPackages']){
