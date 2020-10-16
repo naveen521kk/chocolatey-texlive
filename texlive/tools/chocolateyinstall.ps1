@@ -1,4 +1,4 @@
-﻿$ErrorActionPreference = 'continue'; # stop on all errors
+$ErrorActionPreference = 'stop'; # stop on all errors
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 . "$toolsDir/helper.ps1"
 
@@ -50,9 +50,9 @@ $env:TEXLIVE_INSTALL_NO_WELCOME=$true
 
 #Write-Debug "Installer Version is $(& "$($toolsDir)\install-tl-windows.bat" -version)"
 Write-Debug "Starting Installer with parameter -no-gui -profile=`"$($profilelocation.profileLoc)`""
-tree /A /F $toolsDir
-#& "$($toolsDir)\install-tl-windows.bat" -no-gui -profile="$($profilelocation.profileLoc)"
-cmd.exe /C "`"$($toolsDir)\install-tl-windows.bat`" -no-gui -profile=`"$($profilelocation.profileLoc)`""
+
+& "$($toolsDir)\install-tl-windows.bat" -no-gui -profile="$($profilelocation.profileLoc)"
+#cmd.exe /C "`"$($toolsDir)\install-tl-windows.bat`" -no-gui -profile=`"$($profilelocation.profileLoc)`""
 
 if ($null -ne $pp['extraPackages']){
      foreach ($c in $pp['extraPackages']){
