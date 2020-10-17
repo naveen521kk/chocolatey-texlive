@@ -21,7 +21,6 @@ jobs:
           tree
           dir texlive\tools
       - name: Install Texlive using Chocolatey
-        shell: cmd
         run: |
           cd texlive
           choco pack
