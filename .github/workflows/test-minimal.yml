@@ -4,7 +4,7 @@ on:
 
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: windows-2016
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
@@ -31,8 +31,8 @@ jobs:
         run: |
           Import-Module "$PWD\.github\cihelper\helper.ps1"
           Get-UninstallRegistryKey "Tex Live*"
-          #not gonna test uninstaller
-          #choco uninstall texlive
+          #I think it is published
+          choco uninstall texlive
       - name: Upload Logs if failes
         uses: actions/upload-artifact@v2
         if: ${{ failure() }}

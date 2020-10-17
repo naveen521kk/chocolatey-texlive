@@ -7,7 +7,6 @@ if ($key.Count -eq 1) {
     $uninstStr = "$($_.UninstallString)".split('"') #should contain no quotes
 	Write-Debug "Uninstall String was $uninstStr adding '--no-confirm' parameter"
 	& "$uninstStr" --no-confirm
-    
   }
 } elseif ($key.Count -eq 0) {
   Write-Warning "$packageName has already been uninstalled by other means."
