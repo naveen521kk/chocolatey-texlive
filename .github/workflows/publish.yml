@@ -1,6 +1,8 @@
 name: publish
 on:
   workflow_dispatch:
+  schedule:
+  - cron: "0 0 2 * *"
 
 jobs:
   publish:
@@ -68,7 +70,7 @@ jobs:
           body: |
             This is the Scheduled Release of Tex Live Chocolatey Package.
             Here, the `.nupkg` of the installer is uploaded as release asset.
-          draft: true
+          draft: false
           prerelease: false
       - name: Upload Release Asset
         id: upload-release-asset 
