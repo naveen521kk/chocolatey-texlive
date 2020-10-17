@@ -18,7 +18,7 @@
     <mailingListUrl>https://www.tug.org/mailman/listinfo/tex-live</mailingListUrl>
     <bugTrackerUrl>https://www.tug.org/mailman/listinfo/tex-live</bugTrackerUrl>
     <tags>texlive tex LaTeX</tags>
-    <summary>Install TeXLive</summary>
+    <summary>TeX Live is a cross-platform, free software distribution for the TeX typesetting system that includes major TeX-related programs, macro packages, and fonts</summary>
     <description><![CDATA[# TeX Live Installer
 
 ![texlive-logo](https://cdn.jsdelivr.net/gh/naveen521kk/chocolatey-texlive@master/texlive/texlive.svg)
