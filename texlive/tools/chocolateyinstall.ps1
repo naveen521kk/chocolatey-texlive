@@ -51,8 +51,10 @@ $env:TEXLIVE_INSTALL_NO_WELCOME=$true
 #Write-Debug "Installer Version is $(& "$($toolsDir)\install-tl-windows.bat" -version)"
 Write-Debug "Starting Installer with parameter -no-gui -profile=`"$($profilelocation.profileLoc)`""
 
-& "$($toolsDir)\install-tl-windows.bat" -no-gui -profile="main.profile"
+#& "$($toolsDir)\install-tl-windows.bat" -no-gui -profile="main.profile"
 #cmd.exe /C "`"$($toolsDir)\install-tl-windows.bat`" -no-gui -profile=`"$($profilelocation.profileLoc)`""
+$cmdBatch = "/c `"$($toolsDir)\install-tl-windows.bat`" -no-gui -profile=`"$($profilelocation.profileLoc)`""
+Start-ChocolateyProcessAsAdmin -Statements $cmdBatch -ExeToRun "cmd.exe"
 
 if ($null -ne $pp['extraPackages']){
      foreach ($c in $pp['extraPackages']){
