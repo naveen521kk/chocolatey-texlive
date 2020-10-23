@@ -53,11 +53,10 @@ if ($pp['scheme'] -eq "infraonly") {
      $ErrorActionPreference = "continue";
 }
 
-Write-Debug "Setting Environment variables TEXLIVE_INSTALL_ENV_NOCHECK and TEXLIVE_INSTALL_NO_WELCOME"
+Write-Host "Setting Environment variables TEXLIVE_INSTALL_ENV_NOCHECK and TEXLIVE_INSTALL_NO_WELCOME"
 $env:TEXLIVE_INSTALL_ENV_NOCHECK = $true #powershell throws error without this
 $env:TEXLIVE_INSTALL_NO_WELCOME = $true
 
-Write-Debug "Installer Version is $(& `"$($toolsDir)\install-tl-windows.bat`" -version)"
 Write-Debug "Starting Installer with parameter -no-gui -profile=`"$($profilelocation.profileLoc)`""
 
 & "$($toolsDir)\install-tl-windows.bat" -no-gui -profile="$($profilelocation.profileLoc)"
