@@ -64,6 +64,10 @@ To have choco remember parameters on upgrade, be sure to set `choco feature enab
 
 
 Note: This Package is automatically Maintained and if issues faced contact the Maintainer.
+
+Sponsor Norbert Preining for https://texlive.info without which this is not possible.
+
+[![sponser](https://cdn.jsdelivr.net/gh/naveen521kk/chocolatey-texlive@master/icons/sponsor.svg)](https://github.com/sponsors/norbusan)
 """
 
 with open(readmePath, "w") as f:

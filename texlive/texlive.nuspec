@@ -9,7 +9,7 @@
     <title>TeX Live Installer</title>
     <authors>TeX Live Team</authors>
     <projectUrl>http://tug.org/texlive/</projectUrl>
-    <iconUrl>https://cdn.jsdelivr.net/gh/naveen521kk/chocolatey-texlive@master/texlive/texlive.svg</iconUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/naveen521kk/chocolatey-texlive@master/icons/texlive.svg</iconUrl>
     <copyright>2020 Tex Live Team</copyright>
     <licenseUrl>https://www.tug.org/texlive/copying.html</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
