@@ -39,13 +39,16 @@ $profileArgs = @{
      InstallLocation = $pp['InstallationPath']
      installType     = $pp['scheme']
      collections     = $pp['collections']
-     workingDir      = "$($env:TEMP)"
+     workingDir      = "$(Get-ToolsLocation)"
 }
 $profilelocation = Write-Profile @profileArgs
 Write-Debug "Profile contents are `n $(gc $profilelocation.profileLoc)"
 # extract install.zip
 Write-Debug "Extracting and Moving Folders"
-Get-ChocolateyUnzip -FileFullPath "$toolsDir\install-tl.zip" -Destination "$toolsDir" -PackageName "texlive"
+# this is done so that the line length doesn't exceeds.
+$zipLocation=$toolsDir
+$toolsDir=Get-ToolsLocation
+Get-ChocolateyUnzip -FileFullPath "$zipLocation\install-tl.zip" -Destination "$toolsDir" -PackageName "Texlive Installer"
 Move-Item -Path "$toolsDir\install-tl-*\*" -Destination "$toolsDir" -Force 
 
 if ($pp['scheme'] -eq "infraonly") {
