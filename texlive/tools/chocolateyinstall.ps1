@@ -59,7 +59,8 @@ $env:TEXLIVE_INSTALL_NO_WELCOME = $true
 
 #Write-Debug "Installer Version is $(& `"$($toolsDir)\install-tl-windows.bat`" -version)"
 Write-Host "Starting Installer with parameter -no-gui -profile=`"$($profilelocation.profileLoc)`""
-Write-Host "Calling: & `"$($toolsDir)\install-tl-windows.bat`" -no-gui -profile=`"$($profilelocation.profileLoc)`"
+Write-Host "batch-filelocation:$($toolsDir)\install-tl-windows.bat"
+Write-Host "Profile Location `"$($profilelocation.profileLoc)`""
 & "$($toolsDir)\install-tl-windows.bat" -no-gui -profile="$($profilelocation.profileLoc)"
 
 if ($null -ne $pp['extraPackages']) {
