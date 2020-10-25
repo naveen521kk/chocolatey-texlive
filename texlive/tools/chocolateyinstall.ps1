@@ -39,7 +39,7 @@ $profileArgs = @{
      InstallLocation = $pp['InstallationPath']
      installType     = $pp['scheme']
      collections     = $pp['collections']
-     workingDir      = "$($env:TEMP)"
+     workingDir      = "$toolsDir"
 }
 $profilelocation = Write-Profile @profileArgs
 Write-Debug "Profile contents are `n $(gc $profilelocation.profileLoc)"
