@@ -1,7 +1,7 @@
 ﻿$ErrorActionPreference = 'stop'; # stop on all errors
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 . "$toolsDir/helper.ps1"
-$toolsDir = Get-ToolsLocation
+$toolsDirNew = Get-ToolsLocation
 $pp = Get-PackageParameters
 if (!$pp['collections']) {
      $pp['collections'] = @()
@@ -39,14 +39,14 @@ $profileArgs = @{
      InstallLocation = $pp['InstallationPath']
      installType     = $pp['scheme']
      collections     = $pp['collections']
-     workingDir      = "$toolsDir"
+     workingDir      = "$toolsDirNew"
 }
 $profilelocation = Write-Profile @profileArgs
 Write-Debug "Profile contents are `n $(gc $profilelocation.profileLoc)"
 # extract install.zip
 Write-Debug "Extracting and Moving Folders"
-Get-ChocolateyUnzip -FileFullPath "$toolsDir\install-tl.zip" -Destination "$toolsDir" -PackageName "texlive"
-Move-Item -Path "$toolsDir\install-tl-*\*" -Destination "$toolsDir" -Force 
+Get-ChocolateyUnzip -FileFullPath "$toolsDir\install-tl.zip" -Destination "$toolsDirNew" -PackageName "texlive"
+Move-Item -Path "$toolsDirNew\install-tl-*\*" -Destination "$toolsDirNew" -Force 
 
 if ($pp['scheme'] -eq "infraonly") {
      Write-Debug "Setting `$ErrorActionPreference to continue as Infra Only install detected"
@@ -56,7 +56,7 @@ if ($pp['scheme'] -eq "infraonly") {
 Write-Debug "Setting Environment variables TEXLIVE_INSTALL_ENV_NOCHECK and TEXLIVE_INSTALL_NO_WELCOME"
 $env:TEXLIVE_INSTALL_ENV_NOCHECK = $true #powershell throws error without this
 $env:TEXLIVE_INSTALL_NO_WELCOME = $true
-
+$toolsDir=$toolsDirNew
 #Write-Debug "Installer Version is $(& `"$($toolsDir)\install-tl-windows.bat`" -version)"
 Write-Host "Starting Installer with parameter -no-gui -profile=`"$($profilelocation.profileLoc)`""
 Write-Host "batch-filelocation:$($toolsDir)\install-tl-windows.bat"
