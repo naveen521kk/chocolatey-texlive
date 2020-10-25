@@ -4,7 +4,7 @@ on:
 
 jobs:
   test:
-    runs-on: windows-2016
+    runs-on: windows-2019
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
@@ -21,6 +21,7 @@ jobs:
           tree
           dir texlive\tools
       - name: Install Texlive using Chocolatey
+        shell: cmd
         run: |
           cd texlive
           choco pack
