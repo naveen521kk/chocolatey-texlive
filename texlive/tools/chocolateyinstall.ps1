@@ -57,9 +57,9 @@ Write-Debug "Setting Environment variables TEXLIVE_INSTALL_ENV_NOCHECK and TEXLI
 $env:TEXLIVE_INSTALL_ENV_NOCHECK = $true #powershell throws error without this
 $env:TEXLIVE_INSTALL_NO_WELCOME = $true
 
-Write-Debug "Installer Version is $(& `"$($toolsDir)\install-tl-windows.bat`" -version)"
-Write-Debug "Starting Installer with parameter -no-gui -profile=`"$($profilelocation.profileLoc)`""
-
+#Write-Debug "Installer Version is $(& `"$($toolsDir)\install-tl-windows.bat`" -version)"
+Write-Host "Starting Installer with parameter -no-gui -profile=`"$($profilelocation.profileLoc)`""
+Write-Host "Calling: & `"$($toolsDir)\install-tl-windows.bat`" -no-gui -profile=`"$($profilelocation.profileLoc)`"
 & "$($toolsDir)\install-tl-windows.bat" -no-gui -profile="$($profilelocation.profileLoc)"
 
 if ($null -ne $pp['extraPackages']) {
