@@ -27,6 +27,7 @@ function Write-Profile {
             $finalProfileStr += "collection-$coll 1`n"
         }
     }
+    New-Item -ItemType Directory -Force -Path "$workingDir"
     Set-Content -Path "$workingDir\texlive.profile" -Value "$finalProfileStr"
     Write-Debug "Written Profile in $workingDir\texlive.profile."
     return @{profileLoc = "$workingDir\texlive.profile" }
