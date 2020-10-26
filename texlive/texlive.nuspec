@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>texlive</id>
-    <version>2020.18102020</version>
+    <version>2020.120201026</version>
     <packageSourceUrl>https://github.com/naveen521kk/chocolatey-texlive</packageSourceUrl>
     <owners>naveen521kk</owners>
     <title>TeX Live Installer</title>
@@ -21,7 +21,7 @@
     <summary>TeX Live is a cross-platform, free software distribution for the TeX typesetting system that includes major TeX-related programs, macro packages, and fonts</summary>
     <description><![CDATA[# TeX Live Installer
 
-![texlive-logo](https://cdn.jsdelivr.net/gh/naveen521kk/chocolatey-texlive@master/texlive/texlive.svg)
+![texlive-logo](https://cdn.jsdelivr.net/gh/naveen521kk/chocolatey-texlive@master/icons/texlive.svg)
 
 TeX Live is intended to be a straightforward way to get up and running with the TeX document production system. It provides a comprehensive TeX system with binaries for most flavors of Unix, including GNU/Linux, macOS, and also Windows. It includes all the major TeX-related programs, macro packages, and fonts that are free software, including support for many languages around the world.
 
@@ -102,6 +102,10 @@ To have choco remember parameters on upgrade, be sure to set `choco feature enab
 
 
 Note: This Package is automatically Maintained and if issues faced contact the Maintainer.
+
+Sponsor Norbert Preining for https://texlive.info without which this is not possible.
+
+[![sponser](https://cdn.jsdelivr.net/gh/naveen521kk/chocolatey-texlive@master/icons/sponsor.svg)](https://github.com/sponsors/norbusan)
 ]]></description>
     <releaseNotes>https://www.tug.org/texlive/doc/texlive-en/texlive-en.html#x1-700009</releaseNotes>
   </metadata>
