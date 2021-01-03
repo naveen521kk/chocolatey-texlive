@@ -8,7 +8,7 @@ Package can be verified like this:
 
 1. Go to
 
-   url: https://texlive.info/tlnet-archive/2021/01/3/tlnet/install-tl.zip
+   url: https://texlive.info/tlnet-archive/2021/01/03/tlnet/install-tl.zip
 
    to download the zip file `install-tl.zip`.
 
@@ -16,7 +16,7 @@ Package can be verified like this:
    - Use powershell function 'Get-FileHash'
    - Use Chocolatey utility 'checksum.exe'
 
-   checksum: f230941ec51604fd624b5216c791124a1028ca8d9611fa3c59cbfb7f6bb95770
+   checksum: 223bfd8a7ae7b6dfd3491416dfbcd02dc2c50f8e489c8715be2cd83b4cb1a8b1
 
 File 'license.txt' is obtained from:
    https://www.tug.org/texlive/LICENSE.TL
