@@ -10,7 +10,7 @@ timeNow = time.localtime()
 urlTexZip = "https://texlive.info/tlnet-archive/{year}/{month}/{date}/tlnet/install-tl.zip".format(
     year=timeNow.tm_year,
     month="0"+str(timeNow.tm_mon) if len(str(timeNow.tm_mon))==1 else timeNow.tm_mon,
-    date=timeNow.tm_mday
+    date="0"+str(timeNow.tm_mday) if len(str(timeNow.tm_mday))==1 else timeNow.tm_mday
 )
 
 con=requests.get(urlTexZip)
