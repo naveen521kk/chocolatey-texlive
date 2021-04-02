@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>texlive</id>
-    <version>2021.20210303</version>
+    <version>2021.20210402</version>
     <packageSourceUrl>https://github.com/naveen521kk/chocolatey-texlive</packageSourceUrl>
     <owners>naveen521kk</owners>
     <title>TeX Live Installer</title>
@@ -26,6 +26,8 @@
 TeX Live is intended to be a straightforward way to get up and running with the TeX document production system. It provides a comprehensive TeX system with binaries for most flavors of Unix, including GNU/Linux, macOS, and also Windows. It includes all the major TeX-related programs, macro packages, and fonts that are free software, including support for many languages around the world.
 
 This _Chocolatey Package_ makes the process of installing TeX Live on CI/CD or No GUI computers but not limited to users to install on their Personal Computers.
+
+**You would need to specify a [larger timout](https://docs.chocolatey.org/en-us/configuration#timeouts) depending on your install**.
 
 ## Package Specific
 
