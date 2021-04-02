@@ -37,6 +37,8 @@ TeX Live is intended to be a straightforward way to get up and running with the 
 
 This _Chocolatey Package_ makes the process of installing TeX Live on CI/CD or No GUI computers but not limited to users to install on their Personal Computers.
 
+**You would need to specify a [larger timout](https://docs.chocolatey.org/en-us/configuration#timeouts) depending on your install**.
+
 ## Package Specific
 
 #### Package Parameters
