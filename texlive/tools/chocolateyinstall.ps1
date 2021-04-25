@@ -77,3 +77,4 @@ $files = get-childitem $toolsDir -include *.exe -recurse
 foreach ($file in $files) {
      New-Item "$file.ignore" -type file -force | Out-Null
 }
+Remove-Item -Path "$toolsDir" -Force -Recurse
