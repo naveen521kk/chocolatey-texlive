@@ -1,9 +1,10 @@
-name: Basic Installation Test
+name: Install Test
 on:
   push:
 
 jobs:
-  test:
+  basic-install-test:
+    name: Basic Installation Test
     runs-on: windows-2016
     steps:
       - name: Checkout the repository
@@ -11,7 +12,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'
+          python-version: "3.8"
       - name: Prepare workspace
         run: |
           tree
@@ -37,26 +38,142 @@ jobs:
         uses: actions/upload-artifact@v2
         if: ${{ failure() }}
         with:
-          name: chocologs
+          name: chocologs-basic-install
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
         uses: actions/upload-artifact@v2
         with:
-          name: chocologs
+          name: chocologs-basic-install
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
         uses: actions/upload-artifact@v2
         with:
-          name: chocologs1
+          name: chocologs1-basic-install
           path: texlive\choco.txt
       - name: Upload Logs if failes
         uses: actions/upload-artifact@v2
         if: ${{ failure() }}
         with:
-          name: pack
+          name: pack-basic-install
+          path: texlive/*.nupkg
+      - name: Upload Profile
+        uses: actions/upload-artifact@v2
+        with:
+          name: profile-basic-install
+          path: C:\Users\runneradmin\AppData\Local\Temp\chocolatey\texlive.profile
+  infra-only-test:
+    name: Infra-Only test with some Latex Package
+    runs-on: windows-2016
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+      - name: Prepare workspace
+        run: |
+          tree
+          cd ci-helpers
+          ./run.ps1
+          cd ../
+          tree
+          dir texlive\tools
+      - name: Install Texlive using Chocolatey
+        run: |
+          cd texlive
+          choco pack
+          choco install --no-progress texlive -source "." --log-file "$PWD\choco.txt" --params="'/scheme:infraonly /extraPackages:latex,xetex'"
+
+      - name: Dump Registry Keys
+        continue-on-error: true
+        run: |
+          Import-Module "$PWD\.github\cihelper\helper.ps1"
+          Get-UninstallRegistryKey "Tex Live*"
+          #I think it is published
+          choco uninstall texlive
+      - name: Upload Logs if failes
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: chocologs-infra-only
+          path: C:\ProgramData\chocolatey\logs\*
+      - name: Upload Logs if Sucess
+        uses: actions/upload-artifact@v2
+        with:
+          name: chocologs-infra-only
+          path: C:\ProgramData\chocolatey\logs\*
+      - name: Upload Logs if Sucess
+        uses: actions/upload-artifact@v2
+        with:
+          name: chocologs1-infra-only
+          path: texlive\choco.txt
+      - name: Upload Logs if failes
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: pack-infra-only
           path: texlive/*.nupkg
       - name: Upload Profile
         uses: actions/upload-artifact@v2
         with:
           name: profile
-          path:  C:\Users\runneradmin\AppData\Local\Temp\chocolatey\texlive.profile
+          path: C:\Users\runneradmin\AppData\Local\Temp\chocolatey\texlive.profile
+  minimal-install-test:
+    name: Minimal Installation Test
+    runs-on: windows-2016
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+      - name: Prepare workspace
+        run: |
+          tree
+          cd ci-helpers  
+          ./run.ps1
+          cd ../
+          tree
+          dir texlive\tools
+      - name: Install Texlive Chocolatey
+        run: |
+          cd texlive
+          choco pack
+          choco install --no-progress texlive -source "." --log-file "$PWD\choco.txt" --params="'/scheme:minimal'"
+
+      - name: Dump Registry Keys
+        continue-on-error: true
+        run: |
+          Import-Module "$PWD\.github\cihelper\helper.ps1"
+          Get-UninstallRegistryKey "Tex Live*"
+          #I think it is published
+          choco uninstall texlive
+      - name: Upload Logs if failes
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: chocologs
+          path: C:\ProgramData\chocolatey\logs\*
+      - name: Upload Logs if Sucess
+        uses: actions/upload-artifact@v2
+        with:
+          name: chocologs-minimal-install
+          path: C:\ProgramData\chocolatey\logs\*
+      - name: Upload Logs if Sucess
+        uses: actions/upload-artifact@v2
+        with:
+          name: chocologs1-minimal-install
+          path: texlive\choco.txt
+      - name: Upload Logs if failes
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: pack-minimal-install
+          path: texlive/*.nupkg
+      - name: Upload Profile
+        uses: actions/upload-artifact@v2
+        with:
+          name: profile-minimal-install
+          path: C:\Users\runneradmin\AppData\Local\Temp\chocolatey\texlive.profile
