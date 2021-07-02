@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>texlive</id>
-    <version>2021.20210602</version>
+    <version>2021.20210702</version>
     <packageSourceUrl>https://github.com/naveen521kk/chocolatey-texlive</packageSourceUrl>
     <owners>naveen521kk</owners>
     <title>TeX Live Installer</title>
