@@ -47,7 +47,7 @@ Write-Debug "Profile contents are `n $(gc $profilelocation.profileLoc)"
 Write-Debug "Extracting and Moving Folders"
 # this is done so that the line length doesn't exceeds.
 $zipLocation=$toolsDir
-$toolsDir="$(Get-ToolsLocation)\temp-install-tl"
+$toolsDir="$(Get-ToolsLocation)\temp-install-tl-$(Get-Date -Format ddMMyy)"
 Get-ChocolateyUnzip -FileFullPath "$zipLocation\install-tl.zip" -Destination "$toolsDir" -PackageName "Texlive Installer"
 Move-Item -Path "$toolsDir\install-tl-*\*" -Destination "$toolsDir" -Force 
 
