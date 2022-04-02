@@ -5,7 +5,7 @@ on:
 jobs:
   basic-install-test:
     name: Basic Installation Test
-    runs-on: windows-2016
+    runs-on: windows-2019
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
@@ -63,7 +63,7 @@ jobs:
           path: C:\Users\runneradmin\AppData\Local\Temp\chocolatey\texlive.profile
   infra-only-test:
     name: Infra-Only test with some Latex Package
-    runs-on: windows-2016
+    runs-on: windows-2019
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
@@ -121,7 +121,7 @@ jobs:
           path: C:\Users\runneradmin\AppData\Local\Temp\chocolatey\texlive.profile
   minimal-install-test:
     name: Minimal Installation Test
-    runs-on: windows-2016
+    runs-on: windows-2019
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
