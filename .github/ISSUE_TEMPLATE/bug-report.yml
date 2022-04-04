@@ -1,6 +1,6 @@
 name: Package Bug Report
 description: Something went wrong with the installation of a package? Or did you find an unexpected behavior?
-title: ""
+title: "[Bug]"
 labels: ["Bug"]
 body:
   - type: markdown
