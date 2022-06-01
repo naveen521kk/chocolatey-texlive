@@ -3,6 +3,15 @@ $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 . "$toolsDir/helper.ps1"
 
 $pp = Get-PackageParameters
+
+# Check for additional parameters
+$AdditionalInstallerParameters = ""
+if ($pp['InstallerParameters']){
+     $AdditionalInstallerParameters = $pp['InstallerParameters']
+}
+Write-Host "Additional parameters for installer: $AdditionalInstallerParameters"
+
+
 if (!$pp['collections']) {
      $pp['collections'] = @()
 }
@@ -67,7 +76,7 @@ $env:TEXLIVE_INSTALL_NO_WELCOME = $true
 Write-Debug "Installer Version is $(& `"$($toolsDir)\install-tl-windows.bat`" -version)"
 Write-Debug "Starting Installer with parameter -no-gui -profile=`"$($profilelocation.profileLoc)`""
 
-& "$($toolsDir)\install-tl-windows.bat" -no-gui -profile="$($profilelocation.profileLoc)"
+& "$($toolsDir)\install-tl-windows.bat" -no-gui -profile="$($profilelocation.profileLoc)" $AdditionalInstallerParameters
 
 if ($null -ne $pp['extraPackages']) {
      foreach ($c in $pp['extraPackages']) {
