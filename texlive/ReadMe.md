@@ -6,7 +6,7 @@ TeX Live is intended to be a straightforward way to get up and running with the 
 
 This _Chocolatey Package_ makes the process of installing TeX Live on CI/CD or No GUI computers but not limited to users to install on their Personal Computers.
 
-**You would need to specify a [larger timout](https://docs.chocolatey.org/en-us/configuration#timeouts) depending on your install**.
+**You would need to specify a [larger timeout](https://docs.chocolatey.org/en-us/configuration#timeouts) depending on your install**.
 
 ## Package Specific
 
@@ -14,10 +14,10 @@ This _Chocolatey Package_ makes the process of installing TeX Live on CI/CD or N
 
 The following package parameters can be set:
 
-- `/collections:` - The TeX Live Collection to install. Default to None. Data type is comma seperated string. Allowed values are listed [here](#allowed-values-collections).
+- `/collections:` - The TeX Live Collection to install. Default to None. Data type is comma separated string. Allowed values are listed [here](#allowed-values-collections).
 - `/scheme:` - The scheme(type) you need to install. Defaults to scheme-basic. Should be a string. Allowed values are listed [here](#allowed-values-schemes).
 - `/InstallationPath:` - Where to install the binaries to - defaults to "`$env:SystemDrive\texlive\<version major>`"
-- `/extraPackages:` - Extra LaTeX Packages that need to be installed using tlmgr. If multiple packages it needs comma seperated.
+- `/extraPackages:` - Extra LaTeX Packages that need to be installed using tlmgr. If multiple packages it needs comma separated.
 
 To pass parameters, use `--params "''"` (e.g. `choco install texlive [other options] --params="'/collections:games /scheme:basic'"`).
 To have choco remember parameters on upgrade, be sure to set `choco feature enable -n=useRememberedArgumentsForUpgrades`.
@@ -86,4 +86,4 @@ Note: This Package is automatically Maintained and if issues faced contact the M
 
 Sponsor Norbert Preining for https://texlive.info without which this is not possible.
 
-[![sponser](https://cdn.jsdelivr.net/gh/naveen521kk/chocolatey-texlive@master/icons/sponsor.svg)](https://github.com/sponsors/norbusan)
+[![sponsor](https://cdn.jsdelivr.net/gh/naveen521kk/chocolatey-texlive@master/icons/sponsor.svg)](https://github.com/sponsors/norbusan)
