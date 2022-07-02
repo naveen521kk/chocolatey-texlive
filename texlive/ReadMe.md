@@ -73,6 +73,7 @@ To have choco remember parameters on upgrade, be sure to set `choco feature enab
 
 
 - basic
+- bookpub
 - context
 - full
 - gust
