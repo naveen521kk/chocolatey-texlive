@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/naveen521kk/chocolatey-texlive/actions?query=workflow%3Apublish">
-    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/naveen521kk/chocolatey-texlive/publish?style=for-the-badge">
+    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/naveen521kk/chocolatey-texlive/publish.yml?branch=master&style=for-the-badge">
   </a>
   <a href="https://github.com/naveen521kk/chocolatey-texlive/blob/master/LICENSE">
     <img alt="GitHub" src="https://img.shields.io/github/license/naveen521kk/chocolatey-texlive?style=for-the-badge">
