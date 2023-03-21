@@ -199,7 +199,7 @@ jobs:
         run: |
           cd texlive
           choco pack
-          choco install --no-progress texlive -source "." --log-file "$PWD\choco.txt" --params="'/InstallerParameters:--repository="https://mirrors.mit.edu/CTAN/systems/texlive/tlnet/"'"
+          choco install --no-progress texlive -source "." --log-file "$PWD\choco.txt" --params="'/InstallerParameters:--repository="https://mirrors.mit.edu/CTAN/systems/texlive/tlnet/" /extraPackages:ctex'"
 
       - name: Dump Registry Keys
         continue-on-error: true
