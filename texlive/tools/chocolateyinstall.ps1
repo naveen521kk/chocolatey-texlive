@@ -82,7 +82,7 @@ if ($null -ne $pp['extraPackages']) {
      foreach ($c in $pp['extraPackages']) {
           Write-Host "Installing $c using tlmgr" -ForegroundColor DarkBlue
           $c = $c.Trim()
-          & "$($pp['InstallationPath'])\bin\win32\tlmgr.bat" install $c
+          & "$($pp['InstallationPath'])\bin\windows\tlmgr.bat" install $c
      }
      
 }
