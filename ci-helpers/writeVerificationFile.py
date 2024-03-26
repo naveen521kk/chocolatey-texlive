@@ -14,6 +14,9 @@ urlTexZip = "https://texlive.info/tlnet-archive/{year}/{month}/{date}/tlnet/inst
 )
 
 con=requests.get(urlTexZip)
+
+con.raise_for_status()
+
 # save file
 with open(installZipFile,'wb') as f:
     f.write(con.content)
