@@ -40,8 +40,8 @@ jobs:
         with:
           name: chocologs-basic-install
           path: C:\ProgramData\chocolatey\logs\*
-      - name: Upload Logs if Sucess
-        uses: actions/upload-artifact@v2
+      - name: Upload Logs if Success
+        uses: actions/upload-artifact@v4
         with:
           name: chocologs-basic-install
           path: C:\ProgramData\chocolatey\logs\*
@@ -99,17 +99,17 @@ jobs:
           name: chocologs-infra-only
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: chocologs-infra-only
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: chocologs1-infra-only
           path: texlive\choco.txt
       - name: Upload Logs if failes
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
           name: pack-infra-only
@@ -151,7 +151,7 @@ jobs:
           #I think it is published
           choco uninstall texlive
       - name: Upload Logs if failes
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
           name: chocologs
