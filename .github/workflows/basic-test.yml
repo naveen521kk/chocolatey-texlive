@@ -8,11 +8,11 @@ jobs:
     runs-on: windows-2019
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.8"
+          python-version: "3.9"
       - name: Prepare workspace
         run: |
           tree
@@ -35,7 +35,7 @@ jobs:
           #I think it is published
           choco uninstall texlive
       - name: Upload Logs if failes
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
           name: chocologs-basic-install
@@ -46,18 +46,18 @@ jobs:
           name: chocologs-basic-install
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: chocologs1-basic-install
           path: texlive\choco.txt
       - name: Upload Logs if failes
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
           name: pack-basic-install
           path: texlive/*.nupkg
       - name: Upload Profile
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: profile-basic-install
           path: C:\Users\runneradmin\AppData\Local\Temp\chocolatey\texlive.profile
@@ -66,11 +66,11 @@ jobs:
     runs-on: windows-2019
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.8"
+          python-version: "3.9"
       - name: Prepare workspace
         run: |
           tree
@@ -93,7 +93,7 @@ jobs:
           #I think it is published
           choco uninstall texlive
       - name: Upload Logs if failes
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
           name: chocologs-infra-only
@@ -115,7 +115,7 @@ jobs:
           name: pack-infra-only
           path: texlive/*.nupkg
       - name: Upload Profile
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: profile
           path: C:\Users\runneradmin\AppData\Local\Temp\chocolatey\texlive.profile
@@ -124,11 +124,11 @@ jobs:
     runs-on: windows-2019
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.8"
+          python-version: "3.9"
       - name: Prepare workspace
         run: |
           tree
@@ -157,23 +157,23 @@ jobs:
           name: chocologs
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: chocologs-minimal-install
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: chocologs1-minimal-install
           path: texlive\choco.txt
       - name: Upload Logs if failes
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
           name: pack-minimal-install
           path: texlive/*.nupkg
       - name: Upload Profile
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: profile-minimal-install
           path: C:\Users\runneradmin\AppData\Local\Temp\chocolatey\texlive.profile
@@ -182,11 +182,11 @@ jobs:
     runs-on: windows-2019
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.8"
+          python-version: "3.9"
       - name: Prepare workspace
         run: |
           tree
@@ -209,29 +209,29 @@ jobs:
           #I think it is published
           choco uninstall texlive
       - name: Upload Logs if failes
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
           name: chocologs
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: chocologs-minimal-install
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: chocologs1-minimal-install
           path: texlive\choco.txt
       - name: Upload Logs if failes
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
           name: pack-minimal-install
           path: texlive/*.nupkg
       - name: Upload Profile
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: profile-minimal-install
           path: C:\Users\runneradmin\AppData\Local\Temp\chocolatey\texlive.profile
