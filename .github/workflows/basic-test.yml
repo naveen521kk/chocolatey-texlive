@@ -1,7 +1,9 @@
 name: Install Test
 on:
   push:
-  tags:
+      branches:
+      - 'master'
+  release:
   workflow_dispatch:
 
 jobs:
