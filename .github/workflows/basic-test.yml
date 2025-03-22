@@ -1,6 +1,8 @@
 name: Install Test
 on:
   push:
+  tags:
+  workflow_dispatch:
 
 jobs:
   basic-install-test:
