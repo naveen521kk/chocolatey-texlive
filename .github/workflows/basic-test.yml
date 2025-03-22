@@ -42,23 +42,23 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
-          name: chocologs-basic-install
+          name: chocologs-basic-install-fail
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Success
         uses: actions/upload-artifact@v4
         with:
-          name: chocologs-basic-install
+          name: chocologs-basic-install-success
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
         uses: actions/upload-artifact@v4
         with:
-          name: chocologs1-basic-install
+          name: chocologs1-basic-install-success
           path: texlive\choco.txt
       - name: Upload Logs if failes
         uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
-          name: pack-basic-install
+          name: pack-basic-install-fail
           path: texlive/*.nupkg
       - name: Upload Profile
         uses: actions/upload-artifact@v4
@@ -100,28 +100,28 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
-          name: chocologs-infra-only
+          name: chocologs-infra-only-fail
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
         uses: actions/upload-artifact@v4
         with:
-          name: chocologs-infra-only
+          name: chocologs-infra-only-success
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
         uses: actions/upload-artifact@v4
         with:
-          name: chocologs1-infra-only
+          name: chocologs1-infra-only-success
           path: texlive\choco.txt
       - name: Upload Logs if failes
         uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
-          name: pack-infra-only
+          name: pack-infra-only-fail
           path: texlive/*.nupkg
       - name: Upload Profile
         uses: actions/upload-artifact@v4
         with:
-          name: profile
+          name: profile-infra
           path: C:\Users\runneradmin\AppData\Local\Temp\chocolatey\texlive.profile
   minimal-install-test:
     name: Minimal Installation Test
@@ -158,23 +158,23 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
-          name: chocologs
+          name: chocologs-minimal-install-fail
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
         uses: actions/upload-artifact@v4
         with:
-          name: chocologs-minimal-install
+          name: chocologs-minimal-install-success
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
         uses: actions/upload-artifact@v4
         with:
-          name: chocologs1-minimal-install
+          name: chocologs1-minimal-install-success
           path: texlive\choco.txt
       - name: Upload Logs if failes
         uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
-          name: pack-minimal-install
+          name: pack-minimal-install-fail
           path: texlive/*.nupkg
       - name: Upload Profile
         uses: actions/upload-artifact@v4
@@ -216,26 +216,26 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
-          name: chocologs
+          name: chocologs-command-line-fail
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
         uses: actions/upload-artifact@v4
         with:
-          name: chocologs-minimal-install
+          name: chocologs-param-install-success
           path: C:\ProgramData\chocolatey\logs\*
       - name: Upload Logs if Sucess
         uses: actions/upload-artifact@v4
         with:
-          name: chocologs1-minimal-install
+          name: chocologs1-param-install-success
           path: texlive\choco.txt
       - name: Upload Logs if failes
         uses: actions/upload-artifact@v4
         if: ${{ failure() }}
         with:
-          name: pack-minimal-install
+          name: pack-param-install-fail
           path: texlive/*.nupkg
       - name: Upload Profile
         uses: actions/upload-artifact@v4
         with:
-          name: profile-minimal-install
+          name: profile-param-install
           path: C:\Users\runneradmin\AppData\Local\Temp\chocolatey\texlive.profile
