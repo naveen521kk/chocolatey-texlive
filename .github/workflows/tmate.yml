@@ -8,6 +8,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Debug with tmate
         uses: mxschmitt/action-tmate@v3
