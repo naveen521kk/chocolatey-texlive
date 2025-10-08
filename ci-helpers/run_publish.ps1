@@ -1,3 +1,5 @@
+$ErrorActionPreference = "Stop"
+
 #run python script
 pip install requests
 #First Get install-tl thanks texlive.info
