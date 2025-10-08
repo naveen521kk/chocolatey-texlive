@@ -1,0 +1,33 @@
+name: Chocolatey Texlive Versioned Install Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Texlive version to test (e.g., 2024.1.0)'
+        required: true
+        type: string
+
+jobs:
+  versioned-install-test:
+    name: Install/Uninstall Texlive ${{ inputs.version }}
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Install Texlive ${{ inputs.version }} from Chocolatey
+        run: |
+          choco install texlive --version="${{ inputs.version }}" --no-progress --log-file="$PWD\choco-install.txt" --execution-timeout=6000
+
+      - name: Uninstall Texlive ${{ inputs.version }}
+        run: |
+          choco uninstall texlive --version="${{ inputs.version }}" --no-progress --log-file="$PWD\choco-uninstall.txt"
+
+      - name: Upload Install/Uninstall Logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: texlive-choco-logs-${{ inputs.version }}
+          path: |
+            ${{ github.workspace }}\choco-install.txt
+            ${{ github.workspace }}\choco-uninstall.txt
